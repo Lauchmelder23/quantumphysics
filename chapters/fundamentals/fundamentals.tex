@@ -1,0 +1,27 @@
+% !TeX root = ../script.tex
+\documentclass[../../script.tex]{subfiles}
+
+\begin{document}
+    \chapter{Fundamentals of Quantum Physics}
+    \minitoc
+    \vspace*{\fill}\par
+    \pagebreak  
+
+    Due to the uncertainty principle, location and impulse of an atomic particle cannot be both stated with arbitrairy precision.
+    The classic trajectory, represented in the model of mass points by a well-defined curve in space $\vec{r}(t)$, is replaced by the probability
+    \begin{equation}
+        W(x, y, z, t) \dd{v} = \abs{\psi(x, y, z, t)}^2 \dd{V}
+    \end{equation}
+    to find the particle in the volume element $\dd{V} = \dd{x}\dd{y}\dd{z}$ at the time $t$. This probability depends on the absolute square of the matter wave function $\psi(x, y, z, t)$.
+
+    In this chapter we wnat to show how this wave function can be calculated for simple examples. These examples will also demonstrate the physical fundamentals of quantum mechanics and its
+    differences to classical particle mechanics, elaborate on the concept of \textit{quantum numbers} and show under which conditions quantum mechanical results can be transitioned into classical physics.
+    This is supposed to clarify that classic (i.e.\ pre-quantum) mechanics are contained in quantum mechanics as a limiting case for very small de Broglie wavelengths $\lambda_{dB} \rightarrow 0$.
+
+    These examples should also demonstrate that almost all insights of quantum mechanics are already known in classic wave optics. This means: the actual novel concepts in quantum mechanics
+    is the description of classic particles with matter waves. The deterministic description of the temporal development of location and impulse of a particle is thus replaced with a statistical
+    treatment, by which we can only discuss probabilities of the results of a measurement. A fundamental uncertainty occurs when we observe location and impulse at the same time.
+
+    \subfile{schroedinger.tex}
+    \subfile{examples.tex}
+\end{document}

@@ -1,0 +1,63 @@
+% !TeX root = ../../script.tex
+\documentclass[../../script.tex]{subfiles}
+
+\begin{document}
+\section[Examples of the Stationary Schrödinger Equation]{Examples of the Stationary Schrödinger Equation}
+
+We now want to solve the Schrödinger equation
+\[
+	\frac{-\hbar^2}{2m} \dv[2]{\psi}{x} + \epot\psi = E\psi
+\]
+for a few simple, one-dimensional problems. These examples will illustrate the description of classical particles as waves and the following physical consequences.
+
+\subsection{The Free Particle}
+
+A particle is said to be free, if it is moving in a constant potention $\phi_0$, because then $\vec{F} = -\grad{\epot}$ means that no forces are acting on the particle. 
+Through a suitable choice of the zero point energy we can set $\phi_0 = 0$, i.e. $\epot = 0$, and thus get the Schrödinger equation for a free particle 
+\begin{equation}\label{eq:onedschroedinger}
+	\frac{-\hbar^2}{2m} \dv[2]{\psi}{x} = E\psi
+\end{equation}
+The total energy $E = \ekin + \epot$ is because of $\epot$ now 
+\[
+	E = \frac{p^2}{2m} = \frac{\hbar^2 k^2}{2m}
+\]
+Thus~\eqref{eq:onedschroedinger} gets reduced to 
+\[
+	\dv[2]{\psi}{x} = -k^2 \psi
+\]
+which has the general solution 
+\begin{equation}\label{eq:onedsolution}
+	\psi(x) = Ae^{ikx} + Be^{-ikx}
+\end{equation}
+The time-dependent wave function 
+\begin{equation}
+	\psi(x, t) = \psi(x) \cdot e^{-i\omega t} = Ae^{i(kx - \omega t)} + Be^{-i(kx + \omega t)}
+\end{equation}
+represents the superposition of a planar wave travelling in the $+x$ and $-x$ direction.
+
+The coefficients $A$ and $B$ are the amplitudes of those waves, which are determined by the boundary conditions.
+For example, the wave function of electrons which are emitted from a cathode in $+x$ direction towards a detector, will have $B = 0$, since there are no particles moving in $-x$.
+From this experimental setup we know that the electrons are found along the length $L$ of the path between cathode and detector. This means their wave function can only be different from zero in this region of space.
+Using the normalization condition we get 
+\begin{align*}
+	&\int_0^L \abs{\psi(x)}^2 \dd{x} = 1 \\
+	&\implies A^2 \cdot L = 1 \implies A = \frac{1}{\sqrt{L}}
+\end{align*}
+To determine the location of a particle at time $t$ more accurately, we will have to construct \textit{wave packets} in place of planar waves~\eqref{eq:onedsolution}
+\begin{equation}
+	\psi(x, t) = \int_{k_0 - \Delta k / 2}^{k_0 + \Delta k / 2} A(k) e^{i(kx - \omega t)} \dd{k}
+\end{equation}
+The location uncertainty of this packet at $t = 0$ is 
+\[
+	\Delta x \ge \frac{\hbar}{2 \Delta p_x} = \frac{1}{2\Delta k}
+\]
+and depends on the pulse width $\Delta p_x = \hbar \Delta k$. The larger $k$ is, the more certainly $\Delta x(t = 0)$ can be determined, but the faster the wave packet spreads.
+
+Experimentally, this can be illustrated as follows: If we apply a short voltage pulse to the cathode at time $t = 0$, then electrons can start travelling towards the detector at this instance.
+The emitted electrons have a velocity distribution $\Delta v$, such that electrons with differing velocities $v$ will not necessarily be in the same location $x$ at a later point in time $t$.
+Instead they are spread over the interval $\Delta x(t) = t \cdot \Delta v$. The velocity distribution is described by $\Delta v \propto \Delta k$ of the wave packet, such that the location uncertainty $\Delta x$ 
+\[
+	\dv{(\Delta x(t))}{t} = \Delta v(t = 0) = \frac{\hbar}{m} \Delta k(t = 0)
+\]
+changes proportionally to the initial impulse uncertainty.
+\end{document}

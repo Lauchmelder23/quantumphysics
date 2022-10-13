@@ -1,0 +1,87 @@
+% !TeX root = ../../script.tex
+\documentclass[../../script.tex]{subfiles}
+
+\begin{document}
+\section[The Schrödinger Equation]{The Schrödinger Equation}
+
+In this section we will outline the fundamental equation of quantum mechanics, which was established by \textit{Erwin Schrödinger} (1887--1961) in 1926.
+The solutions of this equation are the desired wave functions $\psi(x, y, z, t)$. However, these solutions can only be derived in analytical form for a few very simple physical problems.
+Very fast computers are usually able to numerically compute solutions for complex problems.
+
+First, we will consider the mathematically simplest case.A free particle of mass $m$ which moves at a constant velocity $\vec{v}$ in direction $x$.
+With $\vec{p} = \hbar\vec{k}$ and $E = \hbar \omega = \ekin$ (because $\epot = 0$), we know the wave function must be of the form 
+\begin{equation}\label{eq:wavefuncform}
+	\psi(x, t) = Ae^{i(kx-\omega t)} = Ae^{(i/\hbar)(px-\ekin t)}
+\end{equation}
+Here we use the fact that $\ekin = p^2 / 2m$, which is the kinetic energy of the particle. Since the mathematical representation is absolutely identical to that of an electromagnetic wave,
+it makes sense to start with the wave equation 
+\begin{equation}\label{eq:1dwaveeq}
+	\pdv[2]{\psi}{x} = \frac{1}{u^2} \pdv[2]{\psi}{t}
+\end{equation}
+for waves propagating with phase velocity $u$ in direction $x$. For \textit{stationary} problems where $\vec{p}$ and $E$ are time-independent the wave function can be split into a 
+strictly location-dependent factor $\psi(x) = Ae^{ikx}$, and a strictly time-dependent phase factor $e^{-i\omega t}$. Thus we can write 
+\begin{equation}\label{eq:splitwave}
+	\psi(x, t) = \psi(x) \cdot e^{-i\omega t} = A e^{ikx} \cdot e^{-i\omega t}
+\end{equation}
+If we use the ansatz~\eqref{eq:splitwave} in the wave equation~\eqref{eq:1dwaveeq}, and the fact that $k^2 = p^2 / \hbar^2 = 2m\ekin/\hbar^2$, we get the equations
+\begin{equation}\label{eq:values}
+	\begin{split}
+		&\pdv[2]{\psi}{x} = -k^2\psi = -\frac{2m}{k} \cdot \ekin \cdot \psi \\
+		&\pdv[2]{\psi}{t} = -\omega^2 \psi
+	\end{split}
+\end{equation}
+Comparison with~\eqref{eq:1dwaveeq} gives us 
+\[
+	u^2 = \frac{\omega^2}{k^2} \implies u = \frac{\omega}{k}
+\]
+Note that the particle velocity $v_\text{P} = v$ 
+\[
+	v = \frac{p}{m} = \frac{\hbar k}{m} = \pdv{\omega}{k}
+\]
+is different from the phase velocity $u = v_{\text{ph}} = \omega / k$.
+
+In the general case the particle can move in a force field. If it is conservative then we can assign each point a potential energy, with the condition that the total energy $E = \ekin + \epot$ remains constant.
+Using $\ekin = E - \epot$ and~\eqref{eq:values} we then receive the one-dimensional stationary Schrödinger equation
+\begin{tcolorbox}[ams equation]
+	\frac{-\hbar^2}{2m} \pdv[2]{\psi}{x} + \epot\psi = E\psi
+\end{tcolorbox}
+For the general case where the particle is moving freely in three-dimensional space we can use the three-dimensional wave equation 
+\[
+	\laplacian\psi = \frac{1}{u^2} \pdv[2]{\psi}{t}	
+\]
+and the ansatz $\psi(x, y, z, t) = \psi(x, y, z) \cdot e^{-i\omega t}$, we can establish the three-dimensional stationary Schrödinger equation 
+\begin{tcolorbox}[ams equation]\label{eq:stationaryschroedinger}
+	\frac{-\hbar^2}{2m} \laplacian \psi = \epot \psi = E \psi
+\end{tcolorbox}
+If we differentiate~\eqref{eq:wavefuncform} partially for time we receive 
+\[
+	\pdv{\psi}{t} = -\frac{i}{h} \ekin \cdot \psi	
+\]
+and with~\eqref{eq:values} we can find the time-dependent equation for a free particle with $\epot = 0$ (i.e. $\ekin = \const$)
+\begin{equation}
+	-\frac{\hbar^2}{2m} \pdv[2]{\psi(x, t)}{x} = i\hbar \pdv{\psi(x, t)}{t}
+\end{equation}
+The three-dimensional representation is then 
+\begin{tcolorbox}[ams equation]
+	-\frac{\hbar^2}{2m} \laplacian \psi(\vec{r}, t) = i\hbar \pdv{\psi(\vec{r}, t)}{t}
+\end{tcolorbox}
+There are some remarks to be made:
+\begin{itemize}
+	\item In this ``derivation'' we have used the de Broglie-relationship $\vec{p} = \hbar \vec{k}$, which is only supported by experiments and has no mathematical justification.
+	\item The law of conservation of energy of quantum mechanics is $E\psi = \ekin\psi + \epot\psi$. Like in classical mechanics, there is no derivation for this law, and is accepted as truth from experience.
+	\item While electromagnetic waves have a linear dispersion relation $\omega(k) = kc$, the matter wave $\psi(\vec{r}, t)$ of a free particle has a \textit{quadratic} dispersion relation $\omega(k) = (\hbar/2m) \cdot k^2$. This results from $E = \hbar\omega = p^2/2m$.
+	\item The Schrödinger equations are a \textit{linear} homogeneous differential equation. Because of this, different solutions of the equation can be superpositioned. This means, if $\psi_1$ and $\psi_2$ are solutions to the equation, then $\psi_3 = a\cdot\psi_1 + b\cdot\psi_2$ is also a solution.
+	\item Since the time-dependent Schrödinger equation is a complex equation, the wave functions $\psi$ may also be complex. The absolute square $\abs{\psi}^2$ however, which represents the probability of the presence of a particle, is always real.
+\end{itemize}
+For non-stationary problems (i.e. $E = E(t)$ and $p = p(t)$), the dispersion relation $\omega(t)$ also becomes time-dependent. This means that $\partial^2\psi/\partial t^2$ can no longer be written as $-\omega^2 \psi$, and cannot be derived from the wave equation for matter waves of particles.
+
+Schrödinger postulated (!), that even for time-dependent potential energy $\epot(\vec{r}, t)$ the equation 
+\begin{tcolorbox}[ams equation]\label{eq:schroedinger}
+	\frac{-\hbar^2}{2m} \laplacian \psi(\vec{r}, t) + \epot(\vec{r}, t) \psi(\vec{r}, t) = i\hbar\pdv{\psi(\vec{r}, t)}{t}
+\end{tcolorbox}
+holds. The general time-dependent Schrödinger equation has since been verified in numerous experiments, and is generally considered correct, even if no mathematical justification exists.
+This equation is the fundamental equation of quantum mechanics.
+
+For stationary problems we can separate $\psi(\vec{r}, t)$ into $\psi(\vec{r}, t) = \psi(\vec{r}) \cdot e^{-i(E/\hbar) \cdot t}$. Inserting this into~\eqref{eq:schroedinger} yields the 
+stationary Schrödinger equation~\eqref{eq:stationaryschroedinger} for $\psi(\vec{r})$.
+\end{document}

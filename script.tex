@@ -12,6 +12,7 @@
 \usepackage{tikz, pgfplots}
 \usepackage{kbordermatrix}
 \usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
 \usepackage{pdfpages}
 \usepackage[arrowdel]{physics}
 \usetikzlibrary{calc,trees,decorations.markings,positioning,arrows,fit,shapes,angles,patterns}
@@ -37,7 +38,21 @@
     version={4.0},
 ]{doclicense}
 
+\tcbset{colback=yellow!10!white, colframe=red!50!black, 
+        highlight math style= {enhanced, %<-- needed for the ’remember’ options
+            colframe=red,colback=red!10!white,boxsep=0pt}
+        }
+
 \usepackage{subfiles}
+
+\DeclareMathOperator{\const}{const}
+
+\newcommand{\energy}[1]{E_{\text{#1}}}
+\newcommand{\ekin}{\energy{kin}}
+\newcommand{\epot}{\energy{pot}}
+
+\renewcommand{\vec}{\vb*}
+\renewcommand{\laplacian}{\Delta}
 
 \begin{document}
 \begin{titlepage}
@@ -60,6 +75,8 @@
     linkcolor=RoyalBlue,
     urlcolor=black
 }
+
+\subfile{chapters/fundamentals/fundamentals.tex}
 
 \pagestyle{headings}
 
