@@ -30,7 +30,7 @@ which has the general solution
 	\psi(x) = Ae^{ikx} + Be^{-ikx}
 \end{equation}
 The time-dependent wave function 
-\begin{equation}
+\begin{equation}\label{eq:onedsolutioncomplete}
 	\psi(x, t) = \psi(x) \cdot e^{-i\omega t} = Ae^{i(kx - \omega t)} + Be^{-i(kx + \omega t)}
 \end{equation}
 represents the superposition of a planar wave travelling in the $+x$ and $-x$ direction.
@@ -60,4 +60,101 @@ Instead they are spread over the interval $\Delta x(t) = t \cdot \Delta v$. The 
 	\dv{(\Delta x(t))}{t} = \Delta v(t = 0) = \frac{\hbar}{m} \Delta k(t = 0)
 \]
 changes proportionally to the initial impulse uncertainty.
+
+\subsection{Potential Step}
+
+We are still considering the particles from the previous example, however we introduce a potential step at $x = 0$. This means we are considering the potential 
+\[
+	\phi(x) = \begin{cases}
+		0 & x < 0 \\
+		\phi_0 & x \ge 0
+	\end{cases}
+\]
+This means the particles are still moving in direction $+x$ and are free ($\epot = 0$) if their position is $x < 0$. However at position $x = 0$ they enter into an area of higher potential $\phi(x \ge 0) = \phi_0 > 0$.
+The potential energy in this area is still constant $\epot = \energy{0}$. Thus, at $x = 0$ we have a potential jump $\Delta E = \energy{0}$.
+This problem has an equivalent in classic optics: a planar lightwave encountering a boundary between vacuum and material (e.g.\ a glass surface).
+
+We divide the domain $-\infty < x < +\infty$ into two areas I and II\@. For area I with $\epot = 0$ we still have the equation~\eqref{eq:onedschroedinger} with the solution~\eqref{eq:onedsolution}
+for the location part of the wave function 
+\[
+	\psi_{\text{I}}(x) = Ae^{ikx} + Be^{-ikx}
+\]
+where $A$ is the amplitude of the incidental wave, and $B$ the amplitude of the wave reflected from the potential step.
+
+\textbf{Note:} The complete solution is~\eqref{eq:onedsolutioncomplete}. The temporal part of the soltuion is often omitted, because it has no influence in the stationary problems considered here.
+
+In area II, the Schrödinger equation becomes
+\begin{equation}
+	\dv[2]{\psi}{x} + \frac{2m}{\hbar^2}(E - \energy{0})\psi = 0
+\end{equation}
+If we use the shorthand $\alpha = \sqrt{2m(\energy{0} - E)} / \hbar$ we can reduce the equation to 
+\begin{equation}\label{eq:potentialstep}
+	\dv[2]{\psi}{x} - \alpha^2\psi = 0
+\end{equation}
+This equation has the solution 
+\begin{equation}\label{eq:potentialstepsolution}
+	\psi_{\text{II}} = Ce^{+\alpha x} + De^{-\alpha x}
+\end{equation}
+If 
+\[
+	\psi(x) = \begin{cases}
+		\psi_{\text{I}} & x < 0 \\
+		\psi_{\text{II}} & x \ge 0
+	\end{cases}
+\]
+is a solution to the Schrödinger equation~\eqref{eq:potentialstep} on the entire domain $-\infty < x < +\infty$, then $\psi$ has to be continuously differentiable at every point,
+or else the second derivative $\dd^2\psi / \dd x^2$ is not defined, and thus the Schrödinger equation is not applicable.
+Using~\eqref{eq:onedsolution} and~\eqref{eq:potentialstepsolution} this results in the boundary conditions
+\begin{subequations}\label{eq:boundaryconditions}
+	\begin{equation}
+		\begin{split}
+			\psi_{\text{I}}(x = 0) &= \psi_{\text{II}}(x = 0) \\
+			&\implies A + B = C + D
+		\end{split}
+	\end{equation}
+
+	\begin{equation}
+		\begin{split}
+			\eval{\dv{\psi_{\text{I}}}{x}}_0 &= \eval{\dv{\psi_{\text{II}}}{x}}_0 \\
+			&\implies ik(A - B) = \alpha (C - D)
+		\end{split}
+	\end{equation}
+\end{subequations}
+We can now investigate the two cases where the energy $\ekin = E$ of the incoming particle is smaller or larger than the potential step.
+
+\subsubsection{(a) $E < \energy{0}$}
+In this case, $\alpha$ is real valued and the coefficient $C$ in~\eqref{eq:potentialstepsolution} must be zero, because otherwise
+\[
+	\psi_{\text{II}} \xrightarrow{x \rightarrow +\infty} \pm\infty
+\]
+If this happens, the wave function is not normalizable. With the above boundary conditions this yields
+\begin{align}
+	B = \frac{ik + \alpha}{ik - \alpha}A && \text{and} && D = \frac{2ik}{ik - \alpha} A
+\end{align}
+Thus the wave function for $x < 0$ becomes 
+\begin{equation}
+	\psi_{\text{I}}(x) = A \left[ e^{ikx} + \frac{ik + \alpha}{ik - \alpha}e^{-ikx} \right]
+\end{equation}
+The fraction of reflected particles is calculated as 
+\begin{equation}
+	R = \frac{\abs{Be^{-ikx}}^2}{\abs{Ae^{ikx}}^2} = \frac{\abs{B}^2}{\abs{A}^2} = \abs{\frac{ik + \alpha}{ik - \alpha}}^2 = 1
+\end{equation}
+which means that \textit{all} particles are being reflected if $E < \energy{0}$. This corresponds to the expected classical behaviour or particles.
+However there is a notable difference to classic particle mechanics:
+\begin{tcolorbox}
+	The particles are not being reflected at $x = 0$, but instead penetrate the domain $x > 0$ where $\epot = \energy{0} > \ekin$ before returning,
+	even if their energy $\ekin < \energy{0}$ should not be enough to do so in a classical model.
+\end{tcolorbox}
+The probability $P(x)$ of finding a particle in $x > 0$ is 
+\begin{equation}
+	P(x) = \abs{\psi_{\text{II}}}^2 = \abs{De^{-\alpha x}}^2 = \frac{4k^2}{\alpha^2 + k^2} \abs{A}^2 e^{-2\alpha x} = \frac{4k^2}{k_0^2} \abs{A}^2 e^{-2\alpha x}
+\end{equation}
+where $k_0^2 = 2m\energy{0} / \hbar^2$. After a distance $x = 1/(2\alpha)$, the penetration probability is reduced to $1/e$ of its value at $x = 0$.
+
+We already know this result from wave optics. Even if waves are reflected totally at a boundary with refraction index $n = n' - i\kappa$, the wave penetrates the surface of the medium before returning, and the intensity
+of the penetrating wave sinks to $1/e$ of its initial value after a distance $x = 1/(2k\kappa) = \lambda/(4\pi\kappa)$.
+\begin{tcolorbox}
+	Particles with energy $E$ can penetrate into potential areas $\energy{0} > E$ with a certain probability, even if they shouldn't be able to according to classic particle physics.
+\end{tcolorbox}
+Once we accept that particles are described by waves, we can come to the conclusion that particles are allowed to exist in \textit{classically forbidden} locations.
 \end{document}

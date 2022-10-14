@@ -10,10 +10,11 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{multicol}
 \usepackage{tikz, pgfplots}
+\usepackage[parfill]{parskip}
 \usepackage{kbordermatrix}
-\usepackage{fancyhdr}
 \usepackage[most]{tcolorbox}
 \usepackage{pdfpages}
+\usepackage{fancyhdr}
 \usepackage[arrowdel]{physics}
 \usetikzlibrary{calc,trees,decorations.markings,positioning,arrows,fit,shapes,angles,patterns}
 \DeclareDocumentCommand\vnabla{}{\vectorarrow{\nabla}}
@@ -67,6 +68,8 @@
 
 \dominitoc
 \tableofcontents
+
+\pagestyle{headings}
 
 \hypersetup{
     colorlinks,
