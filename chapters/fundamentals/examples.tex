@@ -1,4 +1,4 @@
-% !TeX root = ../../script.tex
+% !TeX root = ../script.tex
 \documentclass[../../script.tex]{subfiles}
 
 \begin{document}
@@ -136,7 +136,7 @@ Thus the wave function for $x < 0$ becomes
 	\psi_{\text{I}}(x) = A \left[ e^{ikx} + \frac{ik + \alpha}{ik - \alpha}e^{-ikx} \right]
 \end{equation}
 The fraction of reflected particles is calculated as 
-\begin{equation}
+\begin{equation}\label{eq:reflectioncoefffirst}
 	R = \frac{\abs{Be^{-ikx}}^2}{\abs{Ae^{ikx}}^2} = \frac{\abs{B}^2}{\abs{A}^2} = \abs{\frac{ik + \alpha}{ik - \alpha}}^2 = 1
 \end{equation}
 which means that \textit{all} particles are being reflected if $E < \energy{0}$. This corresponds to the expected classical behaviour or particles.
@@ -157,4 +157,57 @@ of the penetrating wave sinks to $1/e$ of its initial value after a distance $x 
 	Particles with energy $E$ can penetrate into potential areas $\energy{0} > E$ with a certain probability, even if they shouldn't be able to according to classic particle physics.
 \end{tcolorbox}
 Once we accept that particles are described by waves, we can come to the conclusion that particles are allowed to exist in \textit{classically forbidden} locations.
+
+\subsubsection{(b) $E > \energy{0}$}
+In this case, the kinetic energy $ekin = E$ of the incidental particle is greater than the potential jump $\energy{0}$, and in the classical model all particles would enter the area $x > 0$,
+losing speed in the process, because their kinetic energy decreases to $\ekin = E - \energy{0}$. What does this look like in the wave model? The quantity $\alpha$ is now purely imaginary, so we introduce the real quantity
+\begin{equation}
+	k' = \frac{\sqrt{2m(E - \energy{0})}}{\hbar} = i\alpha
+\end{equation}
+The solution~\eqref{eq:potentialstepsolution} then becomes 
+\begin{equation}
+	\psi_{\text{II}} = Ce^{-ik'x} + De^{ik'x}
+\end{equation}
+Since there are no particles moving in the $-x$ direction, we know that $C = 0$, and we are left with $\psi_{\text{II}} = De^{ik'x}$.
+From the boundary conditions~\eqref{eq:boundaryconditions} we can deduce 
+\begin{align}
+	B = \frac{k - k'}{k + k'}A && \text{and} && D = \frac{2k}{k + k'}A
+\end{align}
+thus leaving us with the wave functions
+\begin{equation}
+	\begin{split}
+		\psi_{\text{I}}(x) &= A \cdot \left(e^{ikx} + \frac{k - k'}{k + k'} \cdot e^{-ikx} \right) \\
+		\psi_{\text{II}}(x) &= \frac{2k}{k + k'}Ae^{ik'x}
+	\end{split}
+\end{equation}
+The \textbf{\textit{reflection coefficient}} $R$, i.e.\ the fraction of reflected particles is then analogous to the result from optics
+\begin{equation}\label{eq:reflectioncoeff}
+	R = \frac{\abs{B}^2}{\abs{A}^2} = \abs{\frac{k - k'}{k + k'}}^2
+\end{equation}
+\textbf{Remark.} Since the wave number $k$ is proportional to the refractive index in optics ($k = n \cdot k_0$), the result~\eqref{eq:reflectioncoeff} can easily be transformed into the reflection coefficient 
+\[
+	R = \abs{\frac{n_1 - n_2}{n_1 + n_2}}^2
+\]
+of a lightwave encountering a boundary surface between two mediums with refractive indexes $n_1$ and $n_2$.
+
+To compute the amount of particles being transmitted per unit of time (i.e.\ the number of particles passing through the area $x = x_0 > 0$ divided by the amount of particles passing through an area $x < 0$ per unit of time)
+one has to consider that the velocities in both areas are different.
+The ratio $v' / v = k' / k = \lambda / \lambda'$ is given by the ratio of the wave numbers. That is why the \textbf{\textit{transmission coefficient}}
+\begin{equation}\label{eq:transmissioncoeff}
+	T = \frac{v' \abs{D}^2}{v \abs{A}^2} = \frac{4k \cdot k'}{(k + k')^2}
+\end{equation}
+From comparing~\eqref{eq:reflectioncoeff} and~\eqref{eq:transmissioncoeff} we can see that 
+\[
+	T + R = 1	
+\]
+which makes sense because the amount of particles overall has to be conserved.
+
+\textbf{\textit{Remarks.}}
+\begin{itemize}
+	\item Total reflection also occurs for $E = \energy{0}$. In this case $\alpha = 0$ and $k' = 0$, and thus according to~\eqref{eq:reflectioncoefffirst} or~\eqref{eq:reflectioncoeff} we see that $R = 1$
+	\item Instead of a positive potential barrier one can also consider a negative one with $\energy{0} < 0$, where reflection and transmission occurs as well. 
+	One has to let the wave incide from the right in order to yield the same equations. The optical equivalent would be the transition from a medium with higher optical density into one with a lower optical density.
+\end{itemize}
+
+\subsection{Quantum Tunnelling}
 \end{document}
