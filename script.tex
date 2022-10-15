@@ -16,8 +16,10 @@
 \usepackage{pdfpages}
 \usepackage{fancyhdr}
 \usepackage[arrowdel]{physics}
+\usepackage{xparse}
 \usetikzlibrary{calc,trees,decorations.markings,positioning,arrows,fit,shapes,angles,patterns}
 \DeclareDocumentCommand\vnabla{}{\vectorarrow{\nabla}}
+\usetikzlibrary{arrows, decorations.markings}
 
 \graphicspath{assets}
 
@@ -51,6 +53,13 @@
 \newcommand{\energy}[1]{E_{\text{#1}}}
 \newcommand{\ekin}{\energy{kin}}
 \newcommand{\epot}{\energy{pot}}
+\newcommand{\wave}[1][\@nil]{%
+  \def\tmp{#1}%
+  \ifx\tmp\@nnil
+    \psi%
+  \else
+    \psi_{\text{#1}}
+  \fi}
 
 \renewcommand{\vec}{\vb*}
 \renewcommand{\laplacian}{\Delta}

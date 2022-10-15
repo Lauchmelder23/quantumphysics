@@ -77,7 +77,7 @@ This problem has an equivalent in classic optics: a planar lightwave encounterin
 We divide the domain $-\infty < x < +\infty$ into two areas I and II\@. For area I with $\epot = 0$ we still have the equation~\eqref{eq:onedschroedinger} with the solution~\eqref{eq:onedsolution}
 for the location part of the wave function 
 \[
-	\psi_{\text{I}}(x) = Ae^{ikx} + Be^{-ikx}
+	\wave[I](x) = Ae^{ikx} + Be^{-ikx}
 \]
 where $A$ is the amplitude of the incidental wave, and $B$ the amplitude of the wave reflected from the potential step.
 
@@ -93,13 +93,13 @@ If we use the shorthand $\alpha = \sqrt{2m(\energy{0} - E)} / \hbar$ we can redu
 \end{equation}
 This equation has the solution 
 \begin{equation}\label{eq:potentialstepsolution}
-	\psi_{\text{II}} = Ce^{+\alpha x} + De^{-\alpha x}
+	\wave[II] = Ce^{+\alpha x} + De^{-\alpha x}
 \end{equation}
 If 
 \[
 	\psi(x) = \begin{cases}
-		\psi_{\text{I}} & x < 0 \\
-		\psi_{\text{II}} & x \ge 0
+		\wave[I] & x < 0 \\
+		\wave[II] & x \ge 0
 	\end{cases}
 \]
 is a solution to the Schrödinger equation~\eqref{eq:potentialstep} on the entire domain $-\infty < x < +\infty$, then $\psi$ has to be continuously differentiable at every point,
@@ -108,14 +108,14 @@ Using~\eqref{eq:onedsolution} and~\eqref{eq:potentialstepsolution} this results 
 \begin{subequations}\label{eq:boundaryconditions}
 	\begin{equation}
 		\begin{split}
-			\psi_{\text{I}}(x = 0) &= \psi_{\text{II}}(x = 0) \\
+			\wave[I](x = 0) &= \wave[II](x = 0) \\
 			&\implies A + B = C + D
 		\end{split}
 	\end{equation}
 
 	\begin{equation}
 		\begin{split}
-			\eval{\dv{\psi_{\text{I}}}{x}}_0 &= \eval{\dv{\psi_{\text{II}}}{x}}_0 \\
+			\eval{\dv{\wave[I]}{x}}_0 &= \eval{\dv{\wave[II]}{x}}_0 \\
 			&\implies ik(A - B) = \alpha (C - D)
 		\end{split}
 	\end{equation}
@@ -125,7 +125,7 @@ We can now investigate the two cases where the energy $\ekin = E$ of the incomin
 \subsubsection{(a) $E < \energy{0}$}
 In this case, $\alpha$ is real valued and the coefficient $C$ in~\eqref{eq:potentialstepsolution} must be zero, because otherwise
 \[
-	\psi_{\text{II}} \xrightarrow{x \rightarrow +\infty} \pm\infty
+	\wave[II] \xrightarrow{x \rightarrow +\infty} \pm\infty
 \]
 If this happens, the wave function is not normalizable. With the above boundary conditions this yields
 \begin{align}
@@ -133,7 +133,7 @@ If this happens, the wave function is not normalizable. With the above boundary 
 \end{align}
 Thus the wave function for $x < 0$ becomes 
 \begin{equation}
-	\psi_{\text{I}}(x) = A \left[ e^{ikx} + \frac{ik + \alpha}{ik - \alpha}e^{-ikx} \right]
+	\wave[I](x) = A \left[ e^{ikx} + \frac{ik + \alpha}{ik - \alpha}e^{-ikx} \right]
 \end{equation}
 The fraction of reflected particles is calculated as 
 \begin{equation}\label{eq:reflectioncoefffirst}
@@ -147,7 +147,7 @@ However there is a notable difference to classic particle mechanics:
 \end{tcolorbox}
 The probability $P(x)$ of finding a particle in $x > 0$ is 
 \begin{equation}
-	P(x) = \abs{\psi_{\text{II}}}^2 = \abs{De^{-\alpha x}}^2 = \frac{4k^2}{\alpha^2 + k^2} \abs{A}^2 e^{-2\alpha x} = \frac{4k^2}{k_0^2} \abs{A}^2 e^{-2\alpha x}
+	P(x) = \abs{\wave[II]}^2 = \abs{De^{-\alpha x}}^2 = \frac{4k^2}{\alpha^2 + k^2} \abs{A}^2 e^{-2\alpha x} = \frac{4k^2}{k_0^2} \abs{A}^2 e^{-2\alpha x}
 \end{equation}
 where $k_0^2 = 2m\energy{0} / \hbar^2$. After a distance $x = 1/(2\alpha)$, the penetration probability is reduced to $1/e$ of its value at $x = 0$.
 
@@ -166,9 +166,9 @@ losing speed in the process, because their kinetic energy decreases to $\ekin = 
 \end{equation}
 The solution~\eqref{eq:potentialstepsolution} then becomes 
 \begin{equation}
-	\psi_{\text{II}} = Ce^{-ik'x} + De^{ik'x}
+	\wave[II] = Ce^{-ik'x} + De^{ik'x}
 \end{equation}
-Since there are no particles moving in the $-x$ direction, we know that $C = 0$, and we are left with $\psi_{\text{II}} = De^{ik'x}$.
+Since there are no particles moving in the $-x$ direction, we know that $C = 0$, and we are left with $\wave[II] = De^{ik'x}$.
 From the boundary conditions~\eqref{eq:boundaryconditions} we can deduce 
 \begin{align}
 	B = \frac{k - k'}{k + k'}A && \text{and} && D = \frac{2k}{k + k'}A
@@ -176,8 +176,8 @@ From the boundary conditions~\eqref{eq:boundaryconditions} we can deduce
 thus leaving us with the wave functions
 \begin{equation}
 	\begin{split}
-		\psi_{\text{I}}(x) &= A \cdot \left(e^{ikx} + \frac{k - k'}{k + k'} \cdot e^{-ikx} \right) \\
-		\psi_{\text{II}}(x) &= \frac{2k}{k + k'}Ae^{ik'x}
+		\wave[I](x) &= A \cdot \left(e^{ikx} + \frac{k - k'}{k + k'} \cdot e^{-ikx} \right) \\
+		\wave[II](x) &= \frac{2k}{k + k'}Ae^{ik'x}
 	\end{split}
 \end{equation}
 The \textbf{\textit{reflection coefficient}} $R$, i.e.\ the fraction of reflected particles is then analogous to the result from optics
@@ -210,4 +210,63 @@ which makes sense because the amount of particles overall has to be conserved.
 \end{itemize}
 
 \subsection{Quantum Tunnelling}
+Now we will consider the case where the area in which the potential energy $\epot(x) = \energy{0}$ has only a finite width $\Delta x = a$,
+such that for $x < 0$ and $x > a$ we have $\epot(x) = 0$, and for $0 \le x \le a$ we have $\epot(x) = \energy{0}$.
+
+The domain is then split into three parts I, II and III, for which we repeat our previous approaches for the calculation of the wave functions 
+\begin{equation}
+	\begin{split}
+		\wave[I] &= Ae^{ikx} + Be^{-ikx} \\
+		\wave[II] &= Ce^{\alpha x} + De^{-\alpha x} \\
+		\wave[III] &= A'e^{ikx}
+	\end{split}
+\end{equation}
+We also find the boundary conditions 
+\begin{align}
+	\wave[I](0) &= \wave[II](0), & \wave[II](a) &= \wave[III](a) \nonumber \\
+	\wave[I]'(0) &= \wave[II]'(0), & \wave[II]'(a) &= \wave[III]'(a)
+\end{align}
+Similar to the previous example we then find the following conditions 
+\begin{align*}
+	A + B &= C + D \\
+	Ce^{\alpha a} + De^{-\alpha a} &= A'e^{ika} \\
+	ik(A - B) &= \alpha (C - D) \\
+	\alpha Ce^{\alpha a} - \alpha D e^{-\alpha a} &= ikA' e^{ika}
+\end{align*}
+Solving the last equation for $A'$ and inserting the relationships between $C$ and $A$ and $D$ and $A$ from the first three equations then gives us the transmission coefficient of the barrier
+\begin{equation}
+	^T = \frac{v \cdot \abs{A'}^2}{v \cdot \abs{A}^2}
+\end{equation}
+
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}
+			\fill[red!10] (3, 0) rectangle (5, 2.5);
+			\draw[black] (0, 0) -- node[above] {I} (3, 0) -- node[above] {II} (5, 0) -- node[above] {III} (8, 0);
+			\draw[red] (0, 0) -- (3, 0) -- (3, 2.5) -- (5, 2.5) -- (5, 0) -- (8, 0);
+
+			\draw[black] (5.05, 2.5) -- (5.35, 2.5);
+			\draw[black, <->] (5.2, 0) -- node[below right] {$\energy{0}$} (5.2, 2.5);
+			\draw[black, <->] (3, 0.5) -- node[above] {$a$} (5, 0.5);
+		
+			\draw[black] (0, 1.5) -- (8, 1.5);
+
+			\draw[red, domain=0:3, smooth, variable=\x] plot ({\x}, {sin(5*\x r) * 0.7 + 1.5}) ;
+			\draw[red, domain=3:5, smooth, variable=\x] plot ({\x}, {exp(-(\x - 3)) + 0.96});
+			\draw[red, domain=5:8, smooth, variable=\x] plot ({\x}, {sin(5*(\x + 0.95) r) * 0.4 + 1.5});
+
+			\node at (1.5, 2.8) {$\lambda = \frac{2\pi}{k}$};
+			\node at (6.5, 2.5) {$\lambda = \frac{2\pi}{k}$};
+		\end{tikzpicture}
+	\end{center}
+
+	\caption{Quantum tunnelling through a rectangular potential barrier}
+	\label{fig:quantumtunnelling}
+\end{figure}
+
+Inserting $k = p/h$ and $E = p^2/2m$ gives
+\begin{equation}
+	T = \frac{1 - E/\energy{0}}{(1 - E/\energy{0}) + (\energy{0} / 4E) \cdot \sinh^2(\alpha \cdot a)}
+\end{equation}
+with $\alpha = \sqrt{2m(\energy{0} - E)}/\hbar$.
 \end{document}
